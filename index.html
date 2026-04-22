@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>WorkOutDoors 功能调研报告</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.7;
+    color: #333;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 24px;
+    background: #f8f9fa;
+  }
+  h1 {
+    font-size: 28px;
+    color: #1a1a1a;
+    border-bottom: 3px solid #007aff;
+    padding-bottom: 12px;
+    margin-bottom: 24px;
+  }
+  h2 {
+    font-size: 20px;
+    color: #1a1a1a;
+    margin-top: 36px;
+    margin-bottom: 16px;
+    padding-left: 12px;
+    border-left: 4px solid #007aff;
+  }
+  h3 {
+    font-size: 16px;
+    color: #444;
+    margin-top: 24px;
+    margin-bottom: 10px;
+  }
+  .tag {
+    display: inline-block;
+    background: #007aff;
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .price {
+    color: #ff3b30;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0;
+    font-size: 14px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+  }
+  th {
+    background: #f1f3f5;
+    font-weight: 600;
+    color: #555;
+  }
+  tr:last-child td { border-bottom: none; }
+  .pros-cons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .card h3 { margin-top: 0; }
+  .pro { border-top: 4px solid #34c759; }
+  .con { border-top: 4px solid #ff3b30; }
+  .flow {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 16px 0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+  }
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+  }
+  .step-num {
+    background: #007aff;
+    color: #fff;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+  .summary {
+    background: #1a1a1a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 32px;
+  }
+  .summary h2 {
+    color: #fff;
+    border-left-color: #34c759;
+    margin-top: 0;
+  }
+  code {
+    background: #f1f3f5;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 13px;
+  }
+  .highlight {
+    background: #fff9c4;
+    padding: 2px 4px;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<h1>WorkOutDoors 功能调研报告 <span class="tag">Apple Watch 户外导航</span></h1>
+
+<p><strong>调研日期：</strong>2026年4月22日 | <strong>数据来源：</strong>小红书用户真实分享</p>
+
+<h2>一、产品定位</h2>
+
+<p>WorkOutDoors（简称 WOD）是一款 <strong>Apple Watch 专用的户外运动软件</strong>，售价 <span class="price">58 元</span>。</p>
+
+<p>它的核心定位是：<span class="highlight">让 Apple Watch 从"智能手表玩具"变成专业户外导航设备</span>，让用户在徒步、越野跑等场景中<strong>无需掏出手机</strong>，直接在手表上完成导航、记录和数据查看。</p>
+
+<h2>二、核心功能清单</h2>
+
+<table>
+  <tr>
+    <th>功能模块</th>
+    <th>具体功能</th>
+    <th>满足的需求</th>
+  </tr>
+  <tr>
+    <td><strong>GPS 轨迹导航</strong></td>
+    <td>导入 GPX 轨迹文件，在手表地图上显示路线；偏离路线 10 米即震动提醒</td>
+    <td>解放双手（拿登山杖）、防止迷路、夜间/复杂地形下安全导航</td>
+  </tr>
+  <tr>
+    <td><strong>航点（Waypoint）</strong></td>
+    <td>自定义设置 CP 补给点、营地、水源、垭口、拍照打卡点等；显示航点方位、剩余距离、预估到达时间</td>
+    <td>多日重装徒步切分每日行程、提前知道爬升/距离、避免错过水源和营地</td>
+  </tr>
+  <tr>
+    <td><strong>离线地图</strong></td>
+    <td>下载轨迹周边离线地图；支持 Thunderfrost 图源（无需翻墙，自带等高线）</td>
+    <td>无信号山区仍能导航；国内用户直接查看北京等地徒步路网</td>
+  </tr>
+  <tr>
+    <td><strong>数据记录</strong></td>
+    <td>心率、绝对海拔、累计爬升、平均配速、当前距离、路线偏移距离、手表剩余电量、分公里详细数据</td>
+    <td>比 Apple Watch 自带运动更专业；掌握体能分配和装备续航</td>
+  </tr>
+  <tr>
+    <td><strong>海拔剖面图</strong></td>
+    <td>实时显示海拔爬升/下降曲线，地图用红蓝区分高于/低于当前海拔的地形</td>
+    <td>提前预判体力消耗大的爬升段；直观理解地形</td>
+  </tr>
+  <tr>
+    <td><strong>多运动支持</strong></td>
+    <td>徒步、越野跑、骑行、马拉松、滑雪等上百种自定义运动模式</td>
+    <td>一款软件覆盖所有户外运动场景，无需切换</td>
+  </tr>
+  <tr>
+    <td><strong>预设配置</strong></td>
+    <td>通过导入预设文件，一键完成上千个英文指标的配置</td>
+    <td>解决全英文界面门槛高的问题；秒变专业配置</td>
+  </tr>
+  <tr>
+    <td><strong>手表快捷键</strong></td>
+    <td>操作按钮一键开启 WOD/防水模式；表冠+侧键切换全地图；双击暂停/开始</td>
+    <td>戴手套/手持登山杖时快速操作，防止误触</td>
+  </tr>
+  <tr>
+    <td><strong>手机遥控</strong></td>
+    <td>手机端可作为手表遥控器，发送设置、锁屏/解锁、查看详细记录</td>
+    <td>手表端操作不便时用手机辅助；徒步后复盘数据</td>
+  </tr>
+  <tr>
+    <td><strong>防水模式</strong></td>
+    <td>一键开启防水锁屏，防止雨水/汗水误触导致记录中断或丢失</td>
+    <td>雨天、出汗多的场景下保证记录连续性</td>
+  </tr>
+</table>
+
+<h2>三、典型使用流程</h2>
+
+<div class="flow">
+  <div class="flow-step">
+    <div class="step-num">1</div>
+    <div><strong>找路线</strong>：国内用"两步路"APP，国外用 AllTrails 网页版</div>
+  </div>
+  <div class="flow-step">
+    <div class="step-num">2</div>
+    <div><strong>导出 GPX</strong>：选择 GPX 格式导出轨迹文件</div>
+  </div>
+  <div class="flow-step">
+    <div class="step-num">3</div>
+    <div><strong>导入 WOD</strong>：手机打开 WOD，选择导入 GPX</div>
+  </div>
+  <div class="flow-step">
+    <div class="step-num">4</div>
+    <div><strong>发送到手表</strong>：点击两个 Send（Send Map 传输离线地图 + Send Route 传输轨迹）</div>
+  </div>
+  <div class="flow-step">
+    <div class="step-num">5</div>
+    <div><strong>出门开走</strong>：手表上直接看地图、心率、海拔、偏离提醒</div>
+  </div>
+</div>
+
+<h2>四、解决的核心需求</h2>
+
+<table>
+  <tr>
+    <th>用户痛点</th>
+    <th>WOD 如何解决</th>
+  </tr>
+  <tr>
+    <td>徒步时频繁掏手机看路线，不方便拿登山杖</td>
+    <td>手表直接显示地图+路线，抬腕即看</td>
+  </tr>
+  <tr>
+    <td>岔路口容易走错，回头路浪费时间体力</td>
+    <td>偏离路线 10 米震动提醒，实时纠正</td>
+  </tr>
+  <tr>
+    <td>不知道今天还要爬多少、走多远</td>
+    <td>航点切分每日行程，显示剩余距离和爬升</td>
+  </tr>
+  <tr>
+    <td>水源、营地位置记不清</td>
+    <td>航点标注水源/营地，提前提醒</td>
+  </tr>
+  <tr>
+    <td>Apple Watch 自带运动数据太简单</td>
+    <td>心率、海拔、配速、电量、偏移距离等专业指标</td>
+  </tr>
+  <tr>
+    <td>山里没信号，地图加载不出来</td>
+    <td>提前下载离线地图，无信号也能导航</td>
+  </tr>
+  <tr>
+    <td>英文界面复杂，上千个指标不会配</td>
+    <td>预设文件一键导入，秒完成专业配置</td>
+  </tr>
+</table>
+
+<h2>五、优缺点（基于真实用户反馈）</h2>
+
+<div class="pros-cons">
+  <div class="card pro">
+    <h3>优点</h3>
+    <ul>
+      <li>偏离路线震动提醒被多次称为<strong>"救命功能"</strong></li>
+      <li>航点功能对多日重装徒步<strong>极其实用</strong></li>
+      <li>数据维度远超 Apple Watch 自带运动</li>
+      <li>让已有 Apple Watch 的用户<strong>无需再买佳明/高驰</strong>等专业手表</li>
+      <li>支持 Thunderfrost 图源，国内用户无需翻墙即可查看等高线</li>
+    </ul>
+  </div>
+  <div class="card con">
+    <h3>缺点</h3>
+    <ul>
+      <li><strong>耗电快</strong>：Ultra 2 开自带徒步 8 小时剩 75%，开 WOD 掉电明显更快</li>
+      <li><strong>全英文界面</strong>，无中文支持（开发者暂无中文计划）</li>
+      <li>有用户反馈<strong>记录丢失</strong>的情况（白谷查记录少了两段）</li>
+      <li>收费 58 元</li>
+      <li>学习成本高，不看攻略很难上手</li>
+    </ul>
+  </div>
+</div>
+
+<h2>六、适合谁 / 不适合谁</h2>
+
+<table>
+  <tr>
+    <th style="width:50%">适合</th>
+    <th style="width:50%">不适合</th>
+  </tr>
+  <tr>
+    <td>已有 Apple Watch（尤其 Ultra）的户外爱好者</td>
+    <td>没有 Apple Watch 的人（安卓用户无法使用）</td>
+  </tr>
+  <tr>
+    <td>单日/多日徒步、越野跑玩家</td>
+    <td>偶尔公园散步，用自带运动足够</td>
+  </tr>
+  <tr>
+    <td>不想再买佳明/高驰，想把手表利用起来的人</td>
+    <td>对续航极度敏感，无法接受更快耗电</td>
+  </tr>
+  <tr>
+    <td>需要精确导航和轨迹记录的路线型玩家</td>
+    <td>纯休闲游客，不需要 GPX 导航</td>
+  </tr>
+</table>
+
+<div class="summary">
+  <h2>一句话总结</h2>
+  <p>WorkOutDoors 的核心价值是 <strong>"让 Apple Watch 变成专业户外导航仪"</strong>——它通过 GPX 轨迹导入、离线地图、航点管理和偏离提醒，解决了"徒步时不用掏手机也能精准导航"的刚需。</p>
+  <p>代价是学习成本高、耗电快、全英文界面。如果你已经有一块 Apple Watch 且经常走有轨迹的路线，58 元的软件成本远低于换一块佳明手表。</p>
+</div>
+
+<h2>参考来源</h2>
+
+<p>本报告基于以下小红书用户真实分享整理：</p>
+
+<table>
+  <tr>
+    <th>笔记标题</th>
+    <th>作者互动数据</th>
+    <th>链接</th>
+  </tr>
+  <tr>
+    <td>很多人问我这个徒步软件</td>
+    <td>1484 赞 · 1640 收藏 · 161 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/664dc210000000001601232d" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>Workoutdoors最全攻略丨预设文件免费分享</td>
+    <td>360 赞 · 507 收藏 · 46 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/67bd60a1000000000900ee2a" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>WorkOutDoors史诗更新预设分享丨上</td>
+    <td>383 赞 · 358 收藏 · 131 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/69253cf6000000000d03c8aa" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>AppleWatch徒步软件WOD一键设置</td>
+    <td>174 赞 · 215 收藏 · 90 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/67aa2f2a000000001902c735" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>（最新劝退）58块的WorkOutDoors值的买吗</td>
+    <td>49 赞 · 44 收藏 · 77 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/66790097000000001c027ff5" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>在户外训练与比赛中使用WorkOutDoors的经验</td>
+    <td>46 赞 · 59 收藏 · 34 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/691f3e8b000000001e0394b4" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>徒步技巧｜WorkOutDoors的十大必备功能</td>
+    <td>164 赞 · 213 收藏 · 73 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/67c87895000000002a0020a1" target="_blank">查看笔记</a></td>
+  </tr>
+  <tr>
+    <td>🧗户外人必备的16款实用APP｜建议收藏！</td>
+    <td>1289 赞 · 1656 收藏 · 14 评论</td>
+    <td><a href="https://www.xiaohongshu.com/explore/6667fd0300000000060072d9" target="_blank">查看笔记</a></td>
+  </tr>
+</table>
+
+<p style="font-size: 13px; color: #888; margin-top: 20px;">
+  <strong>调研方法：</strong>通过 xhs-cli 搜索关键词 "WorkOutDoors"、"walkoutdoors"、"徒步软件"，读取高赞/高收藏笔记内容、评论及视频描述，提取功能点、用户痛点和使用场景。
+</p>
+
+</body>
+</html>
